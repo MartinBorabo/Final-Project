@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("hi world");
             Console.WriteLine("----------------------------------------------");
             Console.WriteLine("|        Welcome to Movie Rental App         |");
             Console.WriteLine("----------------------------------------------");
