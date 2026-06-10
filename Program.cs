@@ -63,7 +63,15 @@
             string password = Console.ReadLine();
 
             // Check against registered users list
-            if (users.Exists(u => u.username == username && u.password == password))
+
+            if (username == "admin" && password == "admin123")
+            {
+                Console.WriteLine("\n--- Welcome, Admin! ---");
+                running = false; // stop welcome loop
+                // TODO: ShowAdminMenu() will go here
+            }
+            // Check against registered users list
+            else if (users.Exists(u => u.username == username && u.password == password))
             {
                 Console.WriteLine($"\n--- Welcome back, {username}! ---");
                 running = false; // stop welcome loop
