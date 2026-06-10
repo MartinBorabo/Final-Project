@@ -2,77 +2,102 @@
 {
     internal class Program
     {
+        // Store registered users as a list of tuples (username, password)
+        static List<(string username, string password)> users = new List<(string, string)>();
+
         static void Main(string[] args)
         {
-
             DisplayWelcomeScreen();
+        }// end of Main
 
 
-        }//end of Main
-
-        //DisplayWelcomeScreen method to display the welcome screen and handle user sign in/sign up
+        // DisplayWelcomeScreen - shows the welcome screen and handles sign in / sign up
         static void DisplayWelcomeScreen()
         {
-            Console.WriteLine("----------------------------------------------");
-            Console.WriteLine("|        Welcome to Movie Rental App         |");
-            Console.WriteLine("----------------------------------------------");
+            Console.WriteLine("==============================================");
+            Console.WriteLine("|      Welcome to Movie Rental App          |");
+            Console.WriteLine("==============================================");
 
-            int option;
-            string sUsername = "";
-            string sPassword = "";
-            do
+            bool running = true;
+
+            while (running)
             {
                 Console.WriteLine("\n1. Sign In");
-                Console.WriteLine("2. Sign Up/Create Account");
+                Console.WriteLine("2. Sign Up / Create Account");
                 Console.Write("Choose an option: ");
-                option = Convert.ToInt32(Console.ReadLine());
+
+                string input = Console.ReadLine();
+
+                // Validate input is a number
+                if (!int.TryParse(input, out int option))
+                {
+                    Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                    continue;
+                }
 
                 switch (option)
                 {
                     case 1:
-                        if (sUsername == "" || sPassword == "")
-                        {
-                            Console.WriteLine("No account found. Create an account first.");
-                            break;
-                        }
-
-                        Console.Write("Enter Username: ");
-                        string username = Console.ReadLine();
-                        Console.Write("Enter Password: ");
-                        string password = Console.ReadLine();
-
-                        if (username == sUsername && password == sPassword)
-                        {
-                            Console.Write("--- Sign In Successful! ---");
-                        }
-                        else
-                        {
-                            Console.Write("Username or Password is Wrong!");
-                        }
+                        SignIn(ref running);
                         break;
 
                     case 2:
-                        Console.Write("Create your Username: ");
-                        sUsername = Console.ReadLine();
-                        Console.Write("Create your Password: ");
-                        sPassword = Console.ReadLine();
-                        Console.Write("--- Account Created. ---\n");
+                        SignUp();
                         break;
 
                     default:
                         Console.WriteLine("Invalid option. Please choose 1 or 2.");
                         break;
                 }
-            } while (option != 1);
-            Console.ReadKey();
+            }// end of while
+
+        }// end of DisplayWelcomeScreen
 
 
+        // SignIn - handles user login and routes to correct menu
+        static void SignIn(ref bool running)
+        {
+            Console.Write("\nEnter Username: ");
+            string username = Console.ReadLine();
+            Console.Write("Enter Password: ");
+            string password = Console.ReadLine();
+
+            // Check against registered users list
+            if (users.Exists(u => u.username == username && u.password == password))
+            {
+                Console.WriteLine($"\n--- Welcome back, {username}! ---");
+                running = false; // stop welcome loop
+                // TODO: ShowUserMenu() will go here
+            }
+            else
+            {
+                Console.WriteLine("Username or Password is incorrect. Try again.");
+            }
+
+        }// end of SignIn
 
 
-        }//end of DisplayWelcomeScreen
+        // SignUp - handles new account registration
+        static void SignUp()
+        {
+            Console.Write("\nCreate your Username: ");
+            string newUsername = Console.ReadLine();
+
+            // Check if username already exists
+            if (users.Exists(u => u.username == newUsername))
+            {
+                Console.WriteLine("That username is already taken. Try a different one.");
+                return;
+            }
+
+            Console.Write("Create your Password: ");
+            string newPassword = Console.ReadLine();
+
+            users.Add((newUsername, newPassword));
+            Console.WriteLine("--- Account Created Successfully! Please Sign In. ---");
+
+        }// end of SignUp
 
 
-
-
-    }//end of class Program
-}//end of namespace 
+    }// end of class Program
+}// end of namespace
