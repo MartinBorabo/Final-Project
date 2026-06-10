@@ -5,12 +5,17 @@
         static void Main(string[] args)
         {
 
+            DisplayWelcomeScreen();
+
+
+        }//end of Main
+
+        //DisplayWelcomeScreen method to display the welcome screen and handle user sign in/sign up
+        static void DisplayWelcomeScreen()
+        {
             Console.WriteLine("----------------------------------------------");
             Console.WriteLine("|        Welcome to Movie Rental App         |");
             Console.WriteLine("----------------------------------------------");
-
-            Console.WriteLine("Have account?        Don't have an account?");
-            Console.WriteLine("1. Sign In           2. Sign Up/Create account");
 
             int option;
             string sUsername = "";
@@ -19,7 +24,7 @@
             {
                 Console.WriteLine("\n1. Sign In");
                 Console.WriteLine("2. Sign Up/Create Account");
-                Console.WriteLine("Choose an option: ");
+                Console.Write("Choose an option: ");
                 option = Convert.ToInt32(Console.ReadLine());
 
                 switch (option)
@@ -38,7 +43,7 @@
 
                         if (username == sUsername && password == sPassword)
                         {
-                            Console.Write("Sign In Successful!");
+                            Console.Write("--- Sign In Successful! ---");
                         }
                         else
                         {
@@ -51,7 +56,7 @@
                         sUsername = Console.ReadLine();
                         Console.Write("Create your Password: ");
                         sPassword = Console.ReadLine();
-                        Console.Write("Account Created.");
+                        Console.Write("--- Account Created. ---\n");
                         break;
 
                     default:
@@ -61,6 +66,13 @@
             } while (option != 1);
             Console.ReadKey();
 
-        }//end of Main
+
+
+
+        }//end of DisplayWelcomeScreen
+
+
+
+
     }//end of class Program
 }//end of namespace 
