@@ -9,17 +9,17 @@ namespace Final_Project
     internal class Movie : MovieDetails
     {
         //fields
-        private string dvdCount;
+        private int dvdCount;
 
         //properties
-        public string DvdCount
+        public int DvdCount
         {
             get { return dvdCount; }
             set { dvdCount = value; }
         }
 
         //constructor
-        public Movie(string title, string genre, int year, string dvdCount) : base(title, genre, year)
+        public Movie(string title, string genre, int year, int dvdCount) : base(title, genre, year)
         {
             DvdCount = dvdCount;
         }

@@ -12,7 +12,7 @@ namespace Final_Project
         // Fields
         private string username;
         private string password;
-        private bool isAdmin;
+        private bool isAdmin; // if user is admin or regular user
 
         // Properties
         public string Username
