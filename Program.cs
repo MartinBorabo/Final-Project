@@ -2,25 +2,26 @@
 {
     internal class Program
     {
-        // Store registered users as a list of tuples (username, password)
         static List<(string username, string password)> users = new List<(string, string)>();
 
         static void Main(string[] args)
         {
             DisplayWelcomeScreen();
+
+
         }// end of Main
 
 
-        // DisplayWelcomeScreen - shows the welcome screen and handles sign in / sign up
+        //Displays Welcome screen and handles Sign In / Sign Up
         static void DisplayWelcomeScreen()
         {
             Console.WriteLine("==============================================");
             Console.WriteLine("|      Welcome to Movie Rental App          |");
             Console.WriteLine("==============================================");
 
-            bool running = true;
+            string loggedInUser = ""; // empty means not logged in yet
 
-            while (running)
+            while (loggedInUser == "")
             {
                 Console.WriteLine("\n1. Sign In");
                 Console.WriteLine("2. Sign Up / Create Account");
@@ -28,7 +29,6 @@
 
                 string input = Console.ReadLine();
 
-                // Validate input is a number
                 if (!int.TryParse(input, out int option))
                 {
                     Console.WriteLine("Invalid input. Please enter 1 or 2.");
@@ -38,7 +38,7 @@
                 switch (option)
                 {
                     case 1:
-                        SignIn(ref running);
+                        loggedInUser = SignIn();
                         break;
 
                     case 2:
@@ -51,47 +51,58 @@
                 }
             }// end of while
 
+
+            // Route to correct menu based on who logged in
+            if (loggedInUser == "admin")
+            {
+                // TODO: ShowAdminMenu()
+            }
+            else
+            {
+                // TODO: ShowUserMenu(loggedInUser)
+            }
+
         }// end of DisplayWelcomeScreen
 
 
-        // SignIn - handles user login and routes to correct menu
-        static void SignIn(ref bool running)
+        // Returns "admin", the username, or "" if login failed
+        static string SignIn()
         {
             Console.Write("\nEnter Username: ");
             string username = Console.ReadLine();
             Console.Write("Enter Password: ");
             string password = Console.ReadLine();
 
-            // Check against registered users list
-
             if (username == "admin" && password == "admin123")
             {
                 Console.WriteLine("\n--- Welcome, Admin! ---");
-                running = false; // stop welcome loop
-                // TODO: ShowAdminMenu() will go here
+                return "admin";
             }
-            // Check against registered users list
             else if (users.Exists(u => u.username == username && u.password == password))
             {
                 Console.WriteLine($"\n--- Welcome back, {username}! ---");
-                running = false; // stop welcome loop
-                // TODO: ShowUserMenu() will go here
+                return username;
             }
             else
             {
                 Console.WriteLine("Username or Password is incorrect. Try again.");
+                return "";
             }
 
         }// end of SignIn
 
 
-        // SignUp - handles new account registration
         static void SignUp()
         {
             Console.Write("\nCreate your Username: ");
             string newUsername = Console.ReadLine();
 
-            // Check if username already exists
+            if (newUsername == "admin")
+            {
+                Console.WriteLine("That username is reserved. Try a different one.");
+                return;
+            }
+
             if (users.Exists(u => u.username == newUsername))
             {
                 Console.WriteLine("That username is already taken. Try a different one.");
