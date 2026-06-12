@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static List<(string username, string password)> users = new List<(string, string)>();
+        static List<User> users = new List<User>();
 
         static void Main(string[] args)
         {
@@ -68,19 +68,29 @@
         // Returns "admin", the username, or "" if login failed
         static string SignIn()
         {
-            Console.Write("\nEnter Username: ");
+            Console.Write("\nEnter your Username: ");
             string username = Console.ReadLine();
             Console.Write("Enter Password: ");
             string password = Console.ReadLine();
 
+            if (username == "" || password == "")
+            {
+                Console.WriteLine("Username and Password cannot be empty.");
+                return "";
+            }
+
+            // If user logged correct deatils for an admin account
             if (username == "admin" && password == "admin123")
             {
-                Console.WriteLine("\n--- Welcome, Admin! ---");
+                Console.WriteLine("--- Admin Login Successful! ---");
                 return "admin";
             }
-            else if (users.Exists(u => u.username == username && u.password == password))
+
+            User userFound = users.Find(u => u.Username == username);
+
+            if (userFound != null && userFound.Password == password)
             {
-                Console.WriteLine($"\n--- Welcome back, {username}! ---");
+                Console.WriteLine($"\n--- Welcome back, {username}! --- ");
                 return username;
             }
             else
@@ -97,25 +107,40 @@
             Console.Write("\nCreate your Username: ");
             string newUsername = Console.ReadLine();
 
+            if (newUsername == "")
+            {
+                Console.WriteLine("Username cannot be empty.");
+                return;
+            }
+            
+            // If the user tries to create with the name "admin"
             if (newUsername == "admin")
             {
-                Console.WriteLine("That username is reserved. Try a different one.");
+                Console.WriteLine("Username 'admin' is reserved. Please choose a different username.");
                 return;
             }
 
-            if (users.Exists(u => u.username == newUsername))
+            // Check if the username already exists in the users list
+            if (users.Exists(u => u.Username == newUsername))
             {
-                Console.WriteLine("That username is already taken. Try a different one.");
+                Console.WriteLine("Username already exists. Please choose a different username.");
                 return;
             }
 
             Console.Write("Create your Password: ");
             string newPassword = Console.ReadLine();
 
-            users.Add((newUsername, newPassword));
+            if (newPassword == "")
+            {
+                Console.WriteLine("Password cannot be empty.");
+                return;
+            }
+
+            User newUser = new User(newUsername, newPassword, false);
+            users.Add(newUser);
             Console.WriteLine("--- Account Created Successfully! Please Sign In. ---");
 
-        }// end of SignUp
+        }// end of Sign Up
 
 
     }// end of class Program
