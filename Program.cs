@@ -59,8 +59,47 @@
             }
             else
             {
-                // TODO: ShowUserMenu(loggedInUser)
-            }
+                //ShowUserMenu(loggedInUser)
+                static void ShowUserMenu(string username)
+                {
+                    bool running = true;
+                    while(running)
+                    {
+                        Console.WriteLine("\n========================================");
+                        Console.WriteLine("1. Show All Movies");
+                        Console.WriteLine("2. Search a Movies"); 
+                        Console.WriteLine("3. Rent a Movies");
+                        Console.WriteLine("99. Exit");
+                        Console.WriteLine("Please choose an option");
+
+                        string input = Console.ReadLine();
+                        if (!int.TryParse(input, out int option))
+                        {
+                            Console.WriteLine("Invalid. Please enter a number.");
+                            continue;
+                        }
+                        switch (option)
+                        {
+                            case 1:
+                                Console.WriteLine("Show All Movies (Coming Soon)");
+                                break;
+                            case 2:
+                                Console.WriteLine("Search a Movies (Coming Soon)");
+                                break;
+                            case 3:
+                                Console.WriteLine("Rent a Movies (Coming Soon)");
+                                break;
+                            case 99:
+                                Console.WriteLine("GoodBye!!!");
+                                running = false;
+                                break;
+
+                            default:
+                                Console.WriteLine("Please choose the number from above.");
+                                break;
+                        }
+                    }//end of while 
+                }//end of showusermenu
 
         }// end of DisplayWelcomeScreen
 
@@ -146,4 +185,4 @@
 
 
     }// end of class Program
-}// end of namespace
+}//end of namespace
