@@ -39,5 +39,22 @@ namespace Final_Project
             IsAdmin = isAdmin;
         }
 
+        //Checks if input password matches the user's password
+        public bool CheckPassword(string inputPassword)
+        {
+            return password == inputPassword;
+        }
+
+
+        // Display user's details
+        /*
+        public void DisplayUserDetails()
+        {
+            Console.WriteLine($"Username: {Username}");
+            Console.WriteLine($"Role: {(IsAdmin ? "Admin" : "Regular User")}");
+        }
+        */
+
+
     }
 }

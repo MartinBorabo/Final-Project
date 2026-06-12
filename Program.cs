@@ -88,7 +88,9 @@
 
             User userFound = users.Find(u => u.Username == username);
 
-            if (userFound != null && userFound.Password == password)
+
+            // Check password matches
+            if (userFound != null && userFound.CheckPassword(password))
             {
                 Console.WriteLine($"\n--- Welcome back, {username}! --- ");
                 return username;
