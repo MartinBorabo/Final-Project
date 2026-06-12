@@ -3,6 +3,7 @@
     internal class Program
     {
         static List<User> users = new List<User>();
+        static MovieRental rentalApp = new MovieRental();
 
         static void Main(string[] args)
         {
@@ -172,22 +173,22 @@
                 switch (option)
                 {
                     case 1:
-                        Console.WriteLine("Show All Movies");
+                        //rentalApp.ListMovies();
                         break;
                     case 2:
-                        Console.WriteLine("Search a Movies");
+                        //rentalApp.SearchMovies();
                         break;
                     case 3:
-                        Console.WriteLine("Rent a Movies");
+                        //rentalApp.RentMovie();
                         break;
                     case 4:
-                        Console.WriteLine("Add a Movie");
+                        rentalApp.AddMovie();
                         break;
                     case 5:
-                        Console.WriteLine("Remove a Movie");
+                        rentalApp.RemoveMovie();
                         break;
                     case 6:
-                        Console.WriteLine("Update a Movie");
+                        rentalApp.UpdateMovie();
                         break;
                     case 99:
                         Console.WriteLine("GoodBye!!!");

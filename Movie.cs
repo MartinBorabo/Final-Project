@@ -23,7 +23,7 @@ namespace Final_Project
         }
 
         // Constructor - calls base class constructor
-        public Movie(string title, string genre, int year, string director, int dvdCount)
+        public Movie(string title, string genre, int year, int dvdCount)
             : base(title, genre, year)
         {    
             DvdCount = dvdCount;
