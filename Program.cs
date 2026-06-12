@@ -227,17 +227,17 @@
                 switch (option)
                 {
                     case 1:
-                        Console.WriteLine("Show All Movies (Coming Soon)");
+                        rentalApp.ListMovies();
                         break;
                     case 2:
-                        Console.WriteLine("Search a Movies (Coming Soon)");
+                        rentalApp.SearchMovies();
                         break;
                     case 3:
-                        Console.WriteLine("Rent a Movies (Coming Soon)");
+                        rentalApp.RentMovie();
                         break;
                     case 99:
-                        Console.WriteLine("GoodBye!!!");
-                        running = false;
+                        Console.WriteLine("\nTHANK YOU FOR VISITING! GOODBYE.   ");
+                        Environment.Exit(0);
                         break;
 
                     default:
