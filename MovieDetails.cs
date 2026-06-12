@@ -38,6 +38,7 @@ namespace Final_Project
             Year = year;
         }
 
-
+        //Abstract method
+        public abstract void DisplayInfo();
     }
 }

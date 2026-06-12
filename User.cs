@@ -47,13 +47,13 @@ namespace Final_Project
 
 
         // Display user's details
-        /*
-        public void DisplayUserDetails()
+        
+        public void DisplayInfo()
         {
             Console.WriteLine($"Username: {Username}");
             Console.WriteLine($"Role: {(IsAdmin ? "Admin" : "Regular User")}");
         }
-        */
+        
 
 
     }
