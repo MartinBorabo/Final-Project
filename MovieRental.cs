@@ -19,10 +19,10 @@ namespace Final_Project
         // ------------------------
         public void ListMovies()
         {
-            Console.WriteLine("\n=============================");
-            Console.WriteLine("All Movies");
-            Console.WriteLine("\n=============================");
-            if(movies.Count==0)
+            Console.WriteLine("==============================================");
+            Console.WriteLine("|              Showing All Movies            |");
+            Console.WriteLine("==============================================");
+            if (movies.Count==0)
             {
                 Console.WriteLine("No movies available.");
                 return;
@@ -33,12 +33,16 @@ namespace Final_Project
             }
         }//end of list all movies
 
+
+
         // ------------------------
         // SEARCH ALL MOVIES
         // ------------------------
         public void SearchMovies()
         {
-            Console.WriteLine("\n=============================");
+            Console.WriteLine("==============================================");
+            Console.WriteLine("|               Search All Movies            |");
+            Console.WriteLine("==============================================");
             Console.Write("Enter Movie Title: ");
             string searchTerm = Console.ReadLine();
             if(searchTerm == "")
@@ -59,15 +63,17 @@ namespace Final_Project
             }
         }//end of search all movies
 
+
+
         // ------------------------
         // RENT A MOVIE
         // ------------------------
         public void RentMovie()
         {
-            Console.WriteLine("\n=============================");
-            Console.WriteLine("Rent a Movie");
-            Console.WriteLine("\n=============================");
-            if(movies.Count==0)
+            Console.WriteLine("==============================================");
+            Console.WriteLine("|                 Rent a Movie               |");
+            Console.WriteLine("==============================================");
+            if (movies.Count==0)
             {
                 Console.WriteLine("No movies available.");
                 return;
@@ -85,23 +91,25 @@ namespace Final_Project
                 Console.WriteLine($"Movie '{title}' not found.");
                 return;
             }
+            
             Console.Write("Enter the number of days you want to rent (1 to 5 only): ");
-            if (!int.TryParse(Console.ReadLine(), out int days) || days < 1 || days > 5) ;
+            if (!int.TryParse(Console.ReadLine(), out int days) || days < 1 || days > 5)
             {          
                 Console.WriteLine("Rental days must be between 1 and 5.");
                 return;
             }
 
             double totalCost = days * 25.00;
-            Console.WriteLine("\n=============================");
-            Console.WriteLine("Rental Confirmation");
-            Console.WriteLine("\n=============================");
+            Console.WriteLine("==============================================");
+            Console.WriteLine("|              Rental Confirmation            |");
+            Console.WriteLine("==============================================");
             Console.WriteLine($"Movie : {movieFound.Title}");
             Console.WriteLine($"Days: {days}");
             Console.WriteLine($"Per Day: $25.00");
             Console.WriteLine($"Total: ${totalCost:F2} ");
             Console.WriteLine("\n=============================");
             Console.WriteLine("Enjoy!!!");
+
         }//end of rent a movie
 
 

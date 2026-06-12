@@ -17,7 +17,7 @@
         static void DisplayWelcomeScreen()
         {
             Console.WriteLine("==============================================");
-            Console.WriteLine("|      Welcome to Movie Rental App          |");
+            Console.WriteLine("|        Welcome to Movie Rental App         |");
             Console.WriteLine("==============================================");
 
             string loggedInUser = ""; // empty means not logged in yet
@@ -173,13 +173,13 @@
                 switch (option)
                 {
                     case 1:
-                        //rentalApp.ListMovies();
+                        rentalApp.ListMovies();
                         break;
                     case 2:
-                        //rentalApp.SearchMovies();
+                        rentalApp.SearchMovies();
                         break;
                     case 3:
-                        //rentalApp.RentMovie();
+                        rentalApp.RentMovie();
                         break;
                     case 4:
                         rentalApp.AddMovie();
