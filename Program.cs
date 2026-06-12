@@ -55,11 +55,12 @@
             // Route to correct menu based on who logged in
             if (loggedInUser == "admin")
             {
-                // TODO: ShowAdminMenu()
+                // ShowAdminMenu()
+                ShowAdminMenu();
             }
             else
             {
-                //ShowUserMenu(loggedInUser)
+                // ShowUserMenu(loggedInUser)
                 ShowUserMenu(loggedInUser);
             }
 
@@ -146,14 +147,71 @@
         }// end of Sign Up
 
 
+        //Display the menu for admin
+        static void ShowAdminMenu()
+        {
+            bool running = true;
+            while (running)
+            {
+                Console.WriteLine("==============================================");
+                Console.WriteLine("\n1. Show All Movies");
+                Console.WriteLine("2. Search a Movies");
+                Console.WriteLine("3. Rent a Movies");
+                Console.WriteLine("4. Add Movie");
+                Console.WriteLine("5. Remove Movie");
+                Console.WriteLine("6. Update Movie");
+                Console.WriteLine("99. Exit");
+                Console.Write("\nPlease choose an option: ");
+                string input = Console.ReadLine();
+
+                if (!int.TryParse(input, out int option))
+                {
+                    Console.WriteLine("\nInvalid. Please enter a number.");
+                    continue;
+                }
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Show All Movies");
+                        break;
+                    case 2:
+                        Console.WriteLine("Search a Movies");
+                        break;
+                    case 3:
+                        Console.WriteLine("Rent a Movies");
+                        break;
+                    case 4:
+                        Console.WriteLine("Add a Movie");
+                        break;
+                    case 5:
+                        Console.WriteLine("Remove a Movie");
+                        break;
+                    case 6:
+                        Console.WriteLine("Update a Movie");
+                        break;
+                    case 99:
+                        Console.WriteLine("GoodBye!!!");
+                        running = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("\nPlease choose the number from above.");
+                        break;
+                }
+
+            } // End of while loop
+        }// End of ShowAdminMenu Method
+
+
+
         // Displays the menu for regular users (non-admin)
         static void ShowUserMenu(string username)
         {
             bool running = true;
             while (running)
             {
-                Console.WriteLine("\n========================================");
-                Console.WriteLine("1. Show All Movies");
+                Console.WriteLine("==============================================");
+                Console.WriteLine("\n1. Show All Movies");
                 Console.WriteLine("2. Search a Movies");
                 Console.WriteLine("3. Rent a Movies");
                 Console.WriteLine("99. Exit");
@@ -162,7 +220,7 @@
 
                 if (!int.TryParse(input, out int option))
                 {
-                    Console.WriteLine("Invalid. Please enter a number.");
+                    Console.WriteLine("\nInvalid. Please enter a number.");
                     continue;
                 }
                 switch (option)
@@ -182,7 +240,7 @@
                         break;
 
                     default:
-                        Console.WriteLine("Please choose the number from above.");
+                        Console.WriteLine("\nPlease choose the number from above.");
                         break;
                 }
             }//end of while 
