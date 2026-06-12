@@ -104,6 +104,8 @@ namespace Final_Project
             Console.WriteLine("Enjoy!!!");
         }//end of rent a movie
 
+
+
         // ------------------------
         // ADD A MOVIE (Admin only)
         // ------------------------
