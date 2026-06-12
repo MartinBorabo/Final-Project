@@ -10,7 +10,10 @@ namespace Final_Project
     internal class MovieRental
     {
         // A list to store movies in the rental system
-        private List<Movie> movies = new List<Movie>();
+        private List<Movie> movies = new List<Movie>()
+        {
+            new Movie("Obsessed", "Psychological", 2026, 4)
+        };
 
 
 
